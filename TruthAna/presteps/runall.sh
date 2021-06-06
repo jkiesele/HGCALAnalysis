@@ -2,10 +2,15 @@
 
 function run {
 file=$1
-cmsRun step1.py outputFile="${file}_1.root" pid=$2 finecalo=$3 maxEvents=100 seed=$4 marco=False npart=$5
-cmsRun step2.py inputFiles=file:"${file}_1.root" outputFile="${file}_2.root" 
-cmsRun runit.py inputFiles=file:"${file}_2.root" outputFile="${file}_ntup.root" 
+cmsRun $CMSSW_BASE/src/HGCALAnalysis/TruthAna/presteps/step1.py outputFile="${file}_1.root" pid=$2 finecalo=$3 maxEvents=50 seed=$4 marco=True npart=$5
+cmsRun $CMSSW_BASE/src/HGCALAnalysis/TruthAna/presteps/step2.py inputFiles=file:"${file}_1.root" outputFile="${file}_2.root" 
+cmsRun $CMSSW_BASE/src/HGCALAnalysis/TruthAna/python/runit.py inputFiles=file:"${file}_2.root" outputFile="${file}_ntup.root" 
 }
+
+#test
+
+run gamma_test 22 False 1 1 
+exit
 
 #run gamma 22 False &
 #run gamma_fc 22 True &

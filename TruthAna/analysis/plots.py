@@ -144,6 +144,15 @@ plt.savefig(outputDir+"sum_e_sc_e_cp_diff2d.pdf")
 plt.close()
 
 
+
+plt.hist2d(cp_ensum.flatten(), (st_ensum/cp_ensum).flatten(), bins=51)
+plt.ylabel(r"$\Sigma  E_{st0} / E_{CP}$")
+plt.xlabel(r"$E_{CP}$ [GeV]")
+makeTitle()
+plt.savefig(outputDir+"sum_e_st_e_cp_ratio2d.pdf")
+plt.close()
+
+
 plt.hist(ratio_sc)
 plt.xlabel(r"$\Sigma E_{sc} / E_{cp}$")
 plt.yscale('log')
